@@ -64,8 +64,37 @@ public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegam
 ```
 (Надеюсь все понятно, каждую строчку распишу позже)
 Далее создаем 2 класса `User` и `UserData`:
-# Kotlin:
+# Kotlin `User`:
 ```kotlin
+class User(session: KensukeSession, stat: UserData?) : IBukkitKensukeUser {
+
+    var stat: UserData?
+    var wins = 0
+    private var session: KensukeSession
+
+    private var player: Player? = null
+
+    override fun getSession(): KensukeSession { return session }
+
+    override fun getPlayer(): Player? = player
+
+    override fun setPlayer(p0: Player?) { player = p0 }
+
+    init {
+        this.stat = stat ?: UserData(
+            UUID.fromString(session.userId),
+            0,
+        )
+        this.session = session
+    }
+}
+```
+# Kotlin `UserData`:
+```kotlin
+data class UserData(
+    var uuid: UUID,
+    var wins: Int,
+)
 ```
 
 
