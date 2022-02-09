@@ -40,7 +40,8 @@ lateinit var kensuke: Kensuke
         kensuke = BukkitKensuke.setup(this)
         kensuke.addGlobalUserManager(userManager)
         userManager.isOptional = true
-
+	
+	//Методы, чтобы брать игрока
         fun getUser(uuid: UUID): User? = userManager.getUser(uuid)
         fun getUser(player: Player) = getUser(player.uniqueId)
     }
@@ -53,6 +54,7 @@ public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegam
 
 	@Override
 	public void onEnable() {
+	//
 		IKensuke statService = new Kensuke(IServerPlatform.get(), KensukeConnectionData.fromEnvironment());
 		CoreApi.get().registerService(IKensuke.class, statService);
 
