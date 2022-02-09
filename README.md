@@ -19,3 +19,29 @@ dependencies {
   implementation 'dev.implario:kensuke-client-bukkit:2.1.10'
 }
 ```
+И все!
+
+## Настройка Kensuke в плагине 
+Самое интересное только начинается(в хорошем смысле)!
+Заходим в главный класс плагина и пишем:
+# Kotlin:
+```kotlin
+lateinit var kensuke: Kensuke
+    val statScope = Scope("topgame", UserData::class.java)
+    val userManager = BukkitUserManager(
+        listOf(statScope),
+        { session, context -> User(session, context.getData(statScope)) },
+        { user, context -> context.store(statScope, user.stat) }
+
+    )
+    override fun onEnable() {
+        kensuke = BukkitKensuke.setup(this)
+        kensuke.addGlobalUserManager(userManager)
+        kensuke.globalRealm = "REALM-1"
+        userManager.isOptional = true
+
+        fun getUser(uuid: UUID): User? = userManager.getUser(uuid)
+        fun getUser(player: Player) = getUser(player.uniqueId)
+    }
+```
+
