@@ -157,6 +157,9 @@ export KENSUKE_LOGIN='your_login'
 ```
 (Данные от Kensuke просите у [DelfikPro](https://vk.com/delfikpro))
 
+## Источники
+Kensuke - https://github.com/delfikpro/kensuke
+Kensuke client - https://github.com/delfikpro/kensuke-client
 
 ### Как появилось название Kensuke? (Эту историю нам рассказал [Павикс](https://github.com/ItsPVX))
 `Анфаник приходит в дс к делфику и говорит переименовуй стат сервис в кенсуке это мальчик из яой недавно смотрел`
