@@ -2,7 +2,7 @@
 Максимально понятный гайд(вроде)
 
 ## Что такое Kensuke?
-Kensuke или stats-service - хранилище данных(логично да?). Позволяет максимально просто связать данные игроков между серверов(победы,убийства и другие данные).
+[Kensuke](https://github.com/delfikpro/kensuke) или stats-service - хранилище данных(логично да?). Позволяет максимально просто связать данные игроков между серверов(победы,убийства и другие данные).
 
 ## Как установить?
 Заходим в `build.gradle` и пишем слейдующие:
@@ -26,7 +26,7 @@ dependencies {
 
 Заходим в главный класс плагина и пишем:
 
-# Kotlin(by me):
+# Kotlin(by [me](https://github.com/BaggiYT)):
 ```kotlin
 lateinit var kensuke: Kensuke
     val statScope = Scope("topgame", UserData::class.java)
@@ -46,7 +46,7 @@ lateinit var kensuke: Kensuke
         fun getUser(player: Player) = getUser(player.uniqueId)
     }
 ```
-# Java(by DelfikPro):
+# Java(by [DelfikPro](https://github.com/delfikpro)):
 ```java
 public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegame", SomeGameStats.class);
 
@@ -69,7 +69,7 @@ public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegam
 
 Далее создаем 2 класса `User` и `UserData`:
 
-# Kotlin `User`(by me):
+# Kotlin `User`(by [me](https://github.com/BaggiYT)):
 ```kotlin
 class User(session: KensukeSession, stat: UserData?) : IBukkitKensukeUser {
 
@@ -91,7 +91,7 @@ class User(session: KensukeSession, stat: UserData?) : IBukkitKensukeUser {
     }
 }
 ```
-# Kotlin `UserData`(by me):
+# Kotlin `UserData`(by [me](https://github.com/BaggiYT)):
 ```kotlin
 data class UserData(
     var uuid: UUID,
@@ -99,7 +99,7 @@ data class UserData(
 )
 ```
 
-# Java `User`(by DelfikPro):
+# Java `User`(by [DelfikPro](https://github.com/delfikpro)):
 ```java
 //Да да lombok
 public class AnotherUser extends BukkitKensukeUser {
@@ -114,7 +114,7 @@ public class AnotherUser extends BukkitKensukeUser {
     }
 }
 ```
-# Java `UserData`(by DelfikPro):
+# Java `UserData`(by [DelfikPro](https://github.com/delfikpro)):
 ```java
 //Да да lombok
 @Data
@@ -134,25 +134,29 @@ public class AnotherData {
 ## Как получить данные??
 Все очень просто, сейчас покажу на примере сообщения игроку:
 
-# Kotlin(by me):
+# Kotlin(by [me](https://github.com/BaggiYT)):
 ```kotlin
    // app меняем на ваш главный класс
-   // user.stat!! - берет глобально, а user.win - локально!
    val user = app.userManager.getUser(player.uniqueId)
    player.sendMessage("Побед: " + user.stat!!.win)
 ```
 
-# Java(by DelfikPro):
+# Java(by [DelfikPro](https://github.com/delfikpro)):
 ```java
-   // app меняем на ваш главный класс
-   // user.stat!! - берет глобально, а user.win - локально!
    SomeGameUser user = userManager.getUser(sender);
 		sender.sendMessage("§eРейтинг: §f" + user.getRating());
 		return true;
 ```
 
+## Мелочь в start.sh файле
+Добавляем:
+```
+export KENSUKE_HOST='your_host'
+export KENSUKE_PORT='your_port'
+export KENSUKE_LOGIN='your_login'
+```
+(Данные от Kensuke просите у [DelfikPro](https://vk.com/delfikpro))
 
 
-
-### Как появилось название Kensuke? (Эту историю нам рассказал @ItsPVX)
+### Как появилось название Kensuke? (Эту историю нам рассказал [Павикс](https://github.com/ItsPVX))
 `Анфаник приходит в дс к делфику и говорит переименовуй стат сервис в кенсуке это мальчик из яой недавно смотрел`
