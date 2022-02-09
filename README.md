@@ -62,6 +62,9 @@ public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegam
 				reader -> new SomeGameUser(reader.getUuid(), reader.getName(), reader.getData(statsScope)),
 				SomeGameUser::save);
 ```
+(Надеюсь все понятно, каждую строчку распишу позже)
+Далее создаем 2 класса `User` и `UserData`:
+
 
 
 ### Как появилось название Kensuke? (Эту историю нам рассказал @ItsPVX)
