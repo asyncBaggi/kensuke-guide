@@ -39,7 +39,6 @@ lateinit var kensuke: Kensuke
     override fun onEnable() {
         kensuke = BukkitKensuke.setup(this)
         kensuke.addGlobalUserManager(userManager)
-        kensuke.globalRealm = "REALM-1"
         userManager.isOptional = true
 
         fun getUser(uuid: UUID): User? = userManager.getUser(uuid)
