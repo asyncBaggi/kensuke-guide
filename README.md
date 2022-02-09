@@ -62,9 +62,12 @@ public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegam
 				reader -> new SomeGameUser(reader.getUuid(), reader.getName(), reader.getData(statsScope)),
 				SomeGameUser::save);
 ```
+
 (Надеюсь все понятно, каждую строчку распишу позже)
+
 Далее создаем 2 класса `User` и `UserData`:
-# Kotlin `User`:
+
+# Kotlin `User`(by me):
 ```kotlin
 class User(session: KensukeSession, stat: UserData?) : IBukkitKensukeUser {
 
@@ -73,11 +76,8 @@ class User(session: KensukeSession, stat: UserData?) : IBukkitKensukeUser {
     private var session: KensukeSession
 
     private var player: Player? = null
-
     override fun getSession(): KensukeSession { return session }
-
     override fun getPlayer(): Player? = player
-
     override fun setPlayer(p0: Player?) { player = p0 }
 
     init {
@@ -89,7 +89,7 @@ class User(session: KensukeSession, stat: UserData?) : IBukkitKensukeUser {
     }
 }
 ```
-# Kotlin `UserData`:
+# Kotlin `UserData`(by me):
 ```kotlin
 data class UserData(
     var uuid: UUID,
