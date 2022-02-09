@@ -1,5 +1,5 @@
 # Гайд по Kensuke(stats-service)
-![screenshot](https://ibb.co/KsSKM1Y)
+![screenshot](https://i.ibb.co/mygNLxm/imgonline-com-ua-Blur-ln-Mu-Ny-F3kaz73vy-1.png)
 
 ## Что такое Kensuke?
 [Kensuke](https://github.com/delfikpro/kensuke) или stats-service - хранилище данных(логично да?). Позволяет максимально просто связать данные игроков между серверов(победы,убийства и другие данные).
