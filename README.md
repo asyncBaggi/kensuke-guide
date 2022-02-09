@@ -23,7 +23,9 @@ dependencies {
 
 ## Настройка Kensuke в плагине 
 Самое интересное только начинается(в хорошем смысле)!
+
 Заходим в главный класс плагина и пишем:
+
 # Kotlin(by me):
 ```kotlin
 lateinit var kensuke: Kensuke
@@ -97,6 +99,35 @@ data class UserData(
 )
 ```
 
+# Java `User`(by DelfikPro):
+```java
+//Да да lombok
+public class AnotherUser extends BukkitKensukeUser {
+
+    @Getter
+    @Delegate
+    private final AnotherData data;
+
+    public AnotherUser(Session session, AnotherData data) {
+        super(session);
+        this.data = data;
+    }
+}
+```
+# Java `UserData`(by DelfikPro):
+```java
+//Да да lombok
+@Data
+@AllArgsConstructor
+public class AnotherData {
+
+    private int wins;
+    private double rating;
+    private Map<String, String> complexStuff;
+
+}
+```
+(Если внимательно почитать код, то понятно, позже распишу) 
 
 
 ### Как появилось название Kensuke? (Эту историю нам рассказал @ItsPVX)
