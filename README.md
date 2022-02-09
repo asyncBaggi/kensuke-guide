@@ -129,6 +129,30 @@ public class AnotherData {
 ```
 (Если внимательно почитать код, то понятно, позже распишу) 
 
+Теперь мы создали данные игрока и храним их!
+
+## Как получить данные??
+Все очень просто, сейчас покажу на примере сообщения игроку:
+
+# Kotlin(by me):
+```kotlin
+   // app меняем на ваш главный класс
+   // user.stat!! - берет глобально, а user.win - локально!
+   val user = app.userManager.getUser(player.uniqueId)
+   player.sendMessage("Побед: " + user.stat!!.win)
+```
+
+# Java(by DelfikPro):
+```java
+   // app меняем на ваш главный класс
+   // user.stat!! - берет глобально, а user.win - локально!
+   SomeGameUser user = userManager.getUser(sender);
+		sender.sendMessage("§eРейтинг: §f" + user.getRating());
+		return true;
+```
+
+
+
 
 ### Как появилось название Kensuke? (Эту историю нам рассказал @ItsPVX)
 `Анфаник приходит в дс к делфику и говорит переименовуй стат сервис в кенсуке это мальчик из яой недавно смотрел`
