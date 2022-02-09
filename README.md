@@ -64,6 +64,9 @@ public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegam
 ```
 (Надеюсь все понятно, каждую строчку распишу позже)
 Далее создаем 2 класса `User` и `UserData`:
+# Kotlin:
+```kotlin
+```
 
 
 
