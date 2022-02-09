@@ -24,7 +24,7 @@ dependencies {
 ## Настройка Kensuke в плагине 
 Самое интересное только начинается(в хорошем смысле)!
 Заходим в главный класс плагина и пишем:
-# Kotlin:
+# Kotlin(by me):
 ```kotlin
 lateinit var kensuke: Kensuke
     val statScope = Scope("topgame", UserData::class.java)
@@ -44,7 +44,24 @@ lateinit var kensuke: Kensuke
         fun getUser(player: Player) = getUser(player.uniqueId)
     }
 ```
+# Java(by DelfikPro):
+```java
+public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegame", SomeGameStats.class);
 
+	private UserPool<SomeGameUser> userManager;
+
+	@Override
+	public void onEnable() {
+		IKensuke statService = new Kensuke(IServerPlatform.get(), KensukeConnectionData.fromEnvironment());
+		CoreApi.get().registerService(IKensuke.class, statService);
+
+		statService.useScopes(statsScope);
+		statService.setDataRequired(false);
+
+		this.userManager = statService.registerUserManager(
+				reader -> new SomeGameUser(reader.getUuid(), reader.getName(), reader.getData(statsScope)),
+				SomeGameUser::save);
+```
 
 
 ### Как появилось название Kensuke? (Эту историю нам рассказал @ItsPVX)
