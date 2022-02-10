@@ -127,7 +127,7 @@ public class AnotherUser extends BukkitKensukeUser {
 @Data
 @AllArgsConstructor
 public class AnotherData {
-
+    //Статистика
     private int wins;
     private double rating;
     private Map<String, String> complexStuff;
