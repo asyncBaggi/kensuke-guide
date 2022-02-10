@@ -26,7 +26,7 @@ dependencies {
 
 Заходим в главный класс плагина и пишем:
 
-# Kotlin(by [me](https://github.com/BaggiYT)):
+# Kotlin:
 ```kotlin
 lateinit var kensuke: Kensuke
     val statScope = Scope("topgame", UserData::class.java)
@@ -72,7 +72,7 @@ public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegam
 Далее создаем 2 класса `User` и `UserData`:
 
 
-# Kotlin `User`(by [me](https://github.com/BaggiYT)):
+# Kotlin `User`:
 ```kotlin
 class User(session: KensukeSession, stat: UserData?) : IBukkitKensukeUser {
     //Статистика
@@ -96,7 +96,7 @@ class User(session: KensukeSession, stat: UserData?) : IBukkitKensukeUser {
     }
 }
 ```
-# Kotlin `UserData`(by [me](https://github.com/BaggiYT)):
+# Kotlin `UserData`:
 ```kotlin
 data class UserData(
     //Делаем статистику как в User(только без stat: UserData?)
@@ -140,7 +140,7 @@ public class AnotherData {
 ## Как получить данные??
 Все очень просто, сейчас покажу на примере сообщения игроку:
 
-# Kotlin(by [me](https://github.com/BaggiYT)):
+# Kotlin:
 ```kotlin
    // app меняем на ваш главный класс
    val user = app.userManager.getUser(player.uniqueId)
