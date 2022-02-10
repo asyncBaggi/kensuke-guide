@@ -68,9 +68,9 @@ public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegam
 				SomeGameUser::save);
 ```
 
-(Надеюсь все понятно, каждую строчку распишу позже)
 
 Далее создаем 2 класса `User` и `UserData`:
+
 
 # Kotlin `User`(by [me](https://github.com/BaggiYT)):
 ```kotlin
@@ -114,7 +114,7 @@ public class AnotherUser extends BukkitKensukeUser {
     @Delegate
     private final AnotherData data;
 
-    //AnotherData == UserData
+    //AnotherData == UserData 
     public AnotherUser(Session session, AnotherData data) {
         super(session);
         this.data = data;
@@ -134,7 +134,6 @@ public class AnotherData {
 
 }
 ```
-(Если внимательно почитать код, то понятно, позже распишу) 
 
 Теперь мы создали данные игрока и храним их!
 
