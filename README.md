@@ -48,7 +48,7 @@ lateinit var kensuke: Kensuke
         fun getUser(player: Player) = getUser(player.uniqueId)
     }
 ```
-# Java(by [DelfikPro](https://github.com/delfikpro)):
+# Java:
 ```java
 public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegame", SomeGameStats.class);
 
@@ -105,7 +105,7 @@ data class UserData(
 )
 ```
 
-# Java `User`(by [DelfikPro](https://github.com/delfikpro)):
+# Java `User`:
 ```java
 //Да да lombok
 public class AnotherUser extends BukkitKensukeUser {
@@ -121,7 +121,7 @@ public class AnotherUser extends BukkitKensukeUser {
     }
 }
 ```
-# Java `UserData`(by [DelfikPro](https://github.com/delfikpro)):
+# Java `UserData`:
 ```java
 //Да да lombok
 @Data
@@ -147,7 +147,7 @@ public class AnotherData {
    player.sendMessage("Побед: " + user.stat!!.win)
 ```
 
-# Java(by [DelfikPro](https://github.com/delfikpro)):
+# Java:
 ```java
    SomeGameUser user = userManager.getUser(player);
    player.sendMessage("§eРейтинг: §f" + player.getRating());
@@ -166,7 +166,7 @@ export KENSUKE_LOGIN='your_login'
 Kensuke - https://github.com/delfikpro/kensuke
 Kensuke client - https://github.com/delfikpro/kensuke-client
 
-Спасибо за помощь в изучении Kensuke - [CrazyL3gend](https://github.com/CrazyL3gend), [Func](https://github.com/funcid)
+Спасибо за помощь в изучении Kensuke - [CrazyL3gend](https://github.com/CrazyL3gend), [Func](https://github.com/funcid), [DelfikPro](https://github.com/delfikpro)
 
 ### Как появилось название Kensuke? (Эту историю нам рассказал [Павикс](https://github.com/ItsPVX))
 `Анфаник приходит в дс к делфику и говорит переименовуй стат сервис в кенсуке это мальчик из яой недавно смотрел`
