@@ -37,7 +37,9 @@ lateinit var kensuke: Kensuke
 
     )
     override fun onEnable() {
+        //Сетапим кенсуке
         kensuke = BukkitKensuke.setup(this)
+	//Добавляем ифну о игроке
         kensuke.addGlobalUserManager(userManager)
         userManager.isOptional = true
 	
@@ -54,13 +56,13 @@ public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegam
 
 	@Override
 	public void onEnable() {
-	//
+	        //Регаем кенсуке
 		IKensuke statService = new Kensuke(IServerPlatform.get(), KensukeConnectionData.fromEnvironment());
 		CoreApi.get().registerService(IKensuke.class, statService);
-
+		//Добавляем инфу о игроке
 		statService.useScopes(statsScope);
 		statService.setDataRequired(false);
-
+		
 		this.userManager = statService.registerUserManager(
 				reader -> new SomeGameUser(reader.getUuid(), reader.getName(), reader.getData(statsScope)),
 				SomeGameUser::save);
@@ -73,11 +75,12 @@ public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegam
 # Kotlin `User`(by [me](https://github.com/BaggiYT)):
 ```kotlin
 class User(session: KensukeSession, stat: UserData?) : IBukkitKensukeUser {
-
+    //Статистика
     var stat: UserData?
     var wins = 0
+    
+    //Методы, которые облегчат вам жизнь
     private var session: KensukeSession
-
     private var player: Player? = null
     override fun getSession(): KensukeSession { return session }
     override fun getPlayer(): Player? = player
@@ -85,6 +88,7 @@ class User(session: KensukeSession, stat: UserData?) : IBukkitKensukeUser {
 
     init {
         this.stat = stat ?: UserData(
+	//Указываем статистику в порядке как выше(var stat, wins).
             UUID.fromString(session.userId),
             0,
         )
@@ -95,6 +99,7 @@ class User(session: KensukeSession, stat: UserData?) : IBukkitKensukeUser {
 # Kotlin `UserData`(by [me](https://github.com/BaggiYT)):
 ```kotlin
 data class UserData(
+    //Делаем статистику как в User(только без stat: UserData?)
     var uuid: UUID,
     var wins: Int,
 )
@@ -109,6 +114,7 @@ public class AnotherUser extends BukkitKensukeUser {
     @Delegate
     private final AnotherData data;
 
+    //AnotherData == UserData
     public AnotherUser(Session session, AnotherData data) {
         super(session);
         this.data = data;
@@ -144,9 +150,8 @@ public class AnotherData {
 
 # Java(by [DelfikPro](https://github.com/delfikpro)):
 ```java
-   SomeGameUser user = userManager.getUser(sender);
-		sender.sendMessage("§eРейтинг: §f" + user.getRating());
-		return true;
+   SomeGameUser user = userManager.getUser(player);
+   player.sendMessage("§eРейтинг: §f" + player.getRating());
 ```
 
 ## Мелочь в start.sh файле
@@ -161,6 +166,8 @@ export KENSUKE_LOGIN='your_login'
 ## Источники
 Kensuke - https://github.com/delfikpro/kensuke
 Kensuke client - https://github.com/delfikpro/kensuke-client
+
+Спасибо за помощь в изучении Kensuke - [CrazyL3gend](https://github.com/CrazyL3gend)
 
 ### Как появилось название Kensuke? (Эту историю нам рассказал [Павикс](https://github.com/ItsPVX))
 `Анфаник приходит в дс к делфику и говорит переименовуй стат сервис в кенсуке это мальчик из яой недавно смотрел`
