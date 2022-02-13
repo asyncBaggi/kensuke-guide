@@ -50,26 +50,27 @@ lateinit var kensuke: Kensuke
 ```
 # Java:
 ```java
-public static final Scope<SomeGameStats> statsScope = new PlayerScope<>("somegame", SomeGameStats.class);
+private final Scope<GameStats> scope = new PlayerScope<>("game", GameStats.class);
 
 	private UserPool<SomeGameUser> userManager;
 
 	@Override
 	public void onEnable() {
-	        //Регаем кенсуке
-		IKensuke statService = new Kensuke(IServerPlatform.get(), KensukeConnectionData.fromEnvironment());
-		CoreApi.get().registerService(IKensuke.class, statService);
-		//Добавляем инфу о игроке
-		statService.useScopes(statsScope);
-		statService.setDataRequired(false);
-		
-		this.userManager = statService.registerUserManager(
-				reader -> new SomeGameUser(reader.getUuid(), reader.getName(), reader.getData(statsScope)),
-				SomeGameUser::save);
+	       IStatService statService = new StatService(IServerPlatform.get(), StatServiceConnectionData.fromEnvironment());
+               coreApi.registerService(IStatService.class, statService);
+
+               statService.useScopes(scope);
+
+               userManager = statService.registerUserManager(
+                       ctx -> new User(ctx.getUuid(), ctx.getName(), ctx.getData(scope)),
+                       (u, s) -> s.store(scope, u.getStats())
+               );
+	}
+   
 ```
 
 
-Далее создаем 2 класса `User` и `UserData`:
+Далее создаем 2 класса `User`(кроме Java версии??) и `UserData`:
 
 
 # Kotlin `User`:
@@ -105,33 +106,19 @@ data class UserData(
 )
 ```
 
-# Java `User`:
-```java
-//Да да lombok
-public class AnotherUser extends BukkitKensukeUser {
-
-    @Getter
-    @Delegate
-    private final AnotherData data;
-
-    //AnotherData == UserData 
-    public AnotherUser(Session session, AnotherData data) {
-        super(session);
-        this.data = data;
-    }
-}
-```
 # Java `UserData`:
 ```java
 //Да да lombok
 @Data
-@AllArgsConstructor
-public class AnotherData {
-    //Статистика
-    private int wins;
-    private double rating;
-    private Map<String, String> complexStuff;
+public class GameStats {
 
+    private final UUID id;
+    private int blocksPlaced;
+    private int wins;
+    private int blocksMined;
+    private int overtaking;
+
+}
 }
 ```
 
