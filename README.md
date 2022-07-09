@@ -6,24 +6,10 @@
 
 ## Как установить?
 Заходим в `build.gradle` и пишем следующие:
-```
-repositories {
-  mavenLocal()
-  mavenCentral()
-  maven {
-    url 'https://repo.implario.dev/public/'
-  }
-}
 
-dependencies {
-  implementation 'dev.implario:kensuke-client-bukkit:2.1.10'
-}
-```
-И все!
+#Гайд устарел!
 
 ## Настройка Kensuke в плагине 
-Самое интересное только начинается(в хорошем смысле)!
-
 Заходим в главный класс плагина и пишем:
 
 # Kotlin:
@@ -147,7 +133,7 @@ export KENSUKE_HOST='your_host'
 export KENSUKE_PORT='your_port'
 export KENSUKE_LOGIN='your_login'
 ```
-(Данные от Kensuke просите у [DelfikPro](https://vk.com/delfikpro))
+## Данный гайд устарел!!!
 
 ## Источники
 Kensuke - https://github.com/delfikpro/kensuke
@@ -155,5 +141,5 @@ Kensuke client - https://github.com/delfikpro/kensuke-client
 
 Спасибо за помощь в изучении Kensuke - [CrazyL3gend](https://github.com/CrazyL3gend), [Func](https://github.com/funcid), [DelfikPro](https://github.com/delfikpro)
 
-### Как появилось название Kensuke? (Эту историю нам рассказал [Павикс](https://github.com/ItsPVX))
+### Как появилось название Kensuke?
 `Анфаник приходит в дс к делфику и говорит переименовуй стат сервис в кенсуке это мальчик из яой недавно смотрел`
